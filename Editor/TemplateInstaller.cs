@@ -111,8 +111,8 @@ namespace IKhom.TemplateInstaller.Editor
         {
             error = string.Empty;
 
-            // Check Unity version
-            if (!Application.unityVersion.StartsWith("2022") && !Application.unityVersion.StartsWith("2023"))
+            // Check Unity version - support 2022.3 LTS and newer (including Unity 6+)
+            if (!IsUnityVersionSupported(Application.unityVersion))
             {
                 error = $"Unity 2022.3 LTS or newer required. Current: {Application.unityVersion}";
                 return false;
@@ -133,6 +133,21 @@ namespace IKhom.TemplateInstaller.Editor
                 return false;
             }
 
+            return true;
+        }
+
+        private bool IsUnityVersionSupported(string version)
+        {
+            // Extract major version number
+            // Examples: "2022.3.1f1" -> 2022, "6000.3.2f1" -> 6000
+            string[] parts = version.Split('.');
+            if (parts.Length > 0 && int.TryParse(parts[0], out int majorVersion))
+            {
+                // Support Unity 2022.3 LTS and newer (including Unity 6 which is 6000.x)
+                return majorVersion >= 2022;
+            }
+
+            // If we can't parse, assume it's supported to avoid blocking
             return true;
         }
 

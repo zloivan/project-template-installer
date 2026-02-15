@@ -199,11 +199,14 @@ public class MyUI : MonoBehaviour
 
 ## Requirements
 
-- Unity 2022.3 LTS or newer
+- **Unity 2022.3 LTS or newer** (including Unity 6 / 6000.x)
 - Addressables Package 1.21.0+ (auto-installed)
 - Localization Package 1.4.0+ (auto-installed)
 - VContainer 1.17.0+ (auto-installed via Git URL)
 - UniTask (optional but recommended)
+
+### ✅ Unity 6 Support
+This package fully supports Unity 6 (6000.x). See [UNITY_6_COMPATIBILITY.md](UNITY_6_COMPATIBILITY.md) for details.
 
 ## Extensibility
 

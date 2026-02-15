@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-02-16
+
+### 🐛 Fixed
+- **Unity 6 Support**: Fixed version validation to support Unity 6 (6000.x) and newer
+  - Previous version only accepted Unity 2022.x and 2023.x
+  - Now properly validates any Unity version 2022.3 LTS or newer
+  - Added `IsUnityVersionSupported()` method with proper version parsing
+- **Package Dependencies**: Removed Addressables and Localization from package.json dependencies
+  - Prevents package signature warnings
+  - Avoids version conflicts with project's manifest.json
+  - Packages are now validated at runtime instead
+
+### 📝 Changed
+- Updated package version to 1.0.1
+- Enhanced package description to mention Unity 6 compatibility
+- Improved error messages for version validation
+
+### 📚 Documentation
+- Added `UNITY_6_COMPATIBILITY.md` - Comprehensive Unity 6 support guide
+- Added `PACKAGE_SIGNATURE_FIX.md` - Explains and resolves package signature warnings
+- Updated `QUICK_START.md` with new fixes list
+- Updated all documentation to reflect Unity 6 support
+
+### ✅ Tested On
+- Unity 2022.3 LTS
+- Unity 2023.2.x
+- Unity 6000.3.2f1 (Unity 6)
+
+---
+
 ## [1.0.0] - 2025-02-16
 
 ### Added
