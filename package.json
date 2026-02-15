@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "com.unity.addressables": "1.21.0",
-    "com.unity.localization": "1.4.0"
+    "com.unity.localization": "1.4.0",
+    "jp.hadashikick.vcontainer": "1.15.4"
   },
   "samples": [
     {

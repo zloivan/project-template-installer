@@ -32,7 +32,8 @@ namespace IKhom.TemplateInstaller
         [SerializeField] private List<string> requiredPackages = new List<string>
         {
             "com.unity.addressables",
-            "com.unity.localization"
+            "com.unity.localization",
+            "jp.hadashikick.vcontainer"
         };
 
         [Header("Code Templates")]

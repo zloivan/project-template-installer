@@ -139,26 +139,45 @@ Prototype → Modular → Clean Architecture → LiveOps
 
 ## Universal Services
 
-### ContentService
+### ContentService (VContainer-ready)
 ```csharp
 public class ContentService
 {
-    public async UniTask<T> LoadAsync<T>(string key) where T : Object;
-    public async UniTask<T> LoadWithDownloadAsync<T>(string key, IProgress<float> progress);
-    public async UniTask<GameObject> InstantiateAsync(string key, Transform parent = null);
-    public async UniTask<long> GetDownloadSizeAsync(string key);
-    public void Unload(string key);
+    public async Task<T> LoadAsync<T>(string key) where T : Object;
+    public async Task<GameObject> InstantiateAsync(string key, Transform parent = null);
+    public void Release<T>(T obj) where T : Object;
+}
+
+// Usage with VContainer injection:
+public class MyGameplay : MonoBehaviour
+{
+    [Inject] private ContentService _contentService;
+
+    private async void Start()
+    {
+        var prefab = await _contentService.LoadAsync<GameObject>("MyPrefab");
+    }
 }
 ```
 
-### LocalizationService
+### LocalizationService (VContainer-ready)
 ```csharp
 public class LocalizationService
 {
-    public async UniTask InitializeAsync();
-    public async UniTask SetLocaleAsync(string localeCode);
+    public async Task InitializeAsync();
+    public async Task SetLocaleAsync(string localeCode);
     public string GetString(string tableName, string key);
-    public async UniTask<T> GetAssetAsync<T>(string tableName, string key);
+}
+
+// Usage with VContainer injection:
+public class MyUI : MonoBehaviour
+{
+    [Inject] private LocalizationService _localizationService;
+
+    private void Start()
+    {
+        string text = _localizationService.GetString("UI", "play_button");
+    }
 }
 ```
 
@@ -181,9 +200,9 @@ public class LocalizationService
 ## Requirements
 
 - Unity 2022.3 LTS or newer
-- Addressables Package 1.21.0+
-- Localization Package 1.4.0+
-- VContainer (optional but recommended)
+- Addressables Package 1.21.0+ (auto-installed)
+- Localization Package 1.4.0+ (auto-installed)
+- VContainer 1.15.4+ (auto-installed)
 - UniTask (optional but recommended)
 
 ## Extensibility

@@ -295,11 +295,10 @@ namespace IKhom.TemplateInstaller.Editor
 
         private void LoadTemplateDefinitions()
         {
-            // In production, these would be loaded from ScriptableObjects
-            // For now, we'll create them programmatically
-            _singleSceneTemplate = CreateSingleSceneTemplate();
-            _modularTemplate = CreateModularTemplate();
-            _cleanArchitectureTemplate = CreateCleanArchitectureTemplate();
+            // Create templates using the factory
+            _singleSceneTemplate = TemplateDefinitionFactory.CreateSingleSceneTemplate();
+            _modularTemplate = TemplateDefinitionFactory.CreateModularTemplate();
+            _cleanArchitectureTemplate = TemplateDefinitionFactory.CreateCleanArchitectureTemplate();
         }
 
         private TemplateDefinition GetSelectedTemplateDefinition()
@@ -374,27 +373,7 @@ namespace IKhom.TemplateInstaller.Editor
             }
         }
 
-        // Template creation methods (simplified for demonstration)
-        private TemplateDefinition CreateSingleSceneTemplate()
-        {
-            var template = ScriptableObject.CreateInstance<TemplateDefinition>();
-            // Configure template...
-            return template;
-        }
 
-        private TemplateDefinition CreateModularTemplate()
-        {
-            var template = ScriptableObject.CreateInstance<TemplateDefinition>();
-            // Configure template...
-            return template;
-        }
-
-        private TemplateDefinition CreateCleanArchitectureTemplate()
-        {
-            var template = ScriptableObject.CreateInstance<TemplateDefinition>();
-            // Configure template...
-            return template;
-        }
     }
 }
 #endif
