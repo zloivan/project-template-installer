@@ -1,0 +1,31 @@
+{
+  "name": "com.ikhom.project-template-installer",
+  "displayName": "Unity Project Template Installer",
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "Production-ready Unity project template installer with support for Single-Scene, Modular, and Clean Architecture patterns. Includes Addressables, Localization, and VContainer integration out of the box.",
+  "keywords": [
+    "template",
+    "installer",
+    "architecture",
+    "addressables",
+    "localization",
+    "vcontainer",
+    "bootstrap"
+  ],
+  "author": {
+    "name": "IKhom",
+    "email": "contact@ikhom.com"
+  },
+  "dependencies": {
+    "com.unity.addressables": "1.21.0",
+    "com.unity.localization": "1.4.0"
+  },
+  "samples": [
+    {
+      "displayName": "Example Templates",
+      "description": "Example template configurations and usage",
+      "path": "Samples~/ExampleTemplates"
+    }
+  ]
+}

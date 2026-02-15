@@ -1,0 +1,23 @@
+{
+    "name": "IKhom.TemplateInstaller.Editor",
+    "rootNamespace": "IKhom.TemplateInstaller.Editor",
+    "references": [
+        "IKhom.TemplateInstaller.Runtime",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager",
+        "Unity.Localization",
+        "Unity.Localization.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
