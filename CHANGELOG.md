@@ -11,15 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unity 6 (6000.x) version validation - now supports Unity 2022.3 LTS and newer
 - Removed package dependencies from package.json to prevent signature warnings
 - Package installation now uses latest compatible versions (no hardcoded versions)
+- Compilation errors when Addressables/Localization not installed - added conditional compilation
 
 ### Added
 - `PackageAutoInstaller` - automatically prompts to install required packages on first import
-- Packages install without version numbers to get latest compatible version for your Unity
+- `ScriptingDefineManager` - automatically adds/removes define symbols based on installed packages
+- Conditional compilation for Addressables/Localization dependent code
+- Stub implementations when packages are not installed
 
 ### Changed
 - Improved version parsing with `IsUnityVersionSupported()` method
 - Updated package description for Unity 6 compatibility
 - Removed VContainer from required packages (already in manifest.json)
+- `AddressablesConfigurator` now uses `ADDRESSABLES_INSTALLED` define symbol
 
 ---
 

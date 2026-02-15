@@ -3,16 +3,21 @@
 ## How to Use (3 Simple Steps)
 
 ### Step 1: Install Required Packages
-When you first import the Template Installer, it will automatically prompt you to install:
-- ✅ Addressables (latest compatible version)
-- ✅ Localization (latest compatible version)
+When you first import the Template Installer, it will automatically:
+1. **Prompt you to install packages:**
+   - ✅ Addressables (latest compatible version)
+   - ✅ Localization (latest compatible version)
 
-Click **"Install"** when prompted, then wait for:
-- Progress bar in bottom-right corner to complete
-- Console message: "All required packages installed successfully!"
-- No errors in Package Manager window
+2. **Click "Install"** and wait for:
+   - Progress bar in bottom-right corner to complete
+   - Console message: "All required packages installed successfully!"
+   - Unity will recompile scripts (adds `ADDRESSABLES_INSTALLED` define)
 
-**Time:** ~1-2 minutes
+3. **After recompilation:**
+   - No compilation errors
+   - Template Installer is ready to use
+
+**Time:** ~2-3 minutes (including recompilation)
 
 **Note:** VContainer is already in your manifest.json and will be installed automatically.
 

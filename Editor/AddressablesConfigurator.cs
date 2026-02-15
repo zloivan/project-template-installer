@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+#if UNITY_EDITOR && ADDRESSABLES_INSTALLED
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -116,6 +116,31 @@ namespace IKhom.TemplateInstaller.Editor
             AssetDatabase.SaveAssets();
 
             Debug.Log("[AddressablesConfigurator] Global settings configured");
+        }
+    }
+}
+#elif UNITY_EDITOR
+// Stub implementation when Addressables is not installed
+using UnityEngine;
+
+namespace IKhom.TemplateInstaller.Editor
+{
+    public class AddressablesConfigurator
+    {
+        public AddressablesConfigurator()
+        {
+            Debug.LogWarning("[AddressablesConfigurator] Addressables package not installed. Please install it via Package Manager.");
+        }
+
+        public object CreateGroup(AddressableGroupDefinition definition)
+        {
+            Debug.LogWarning("[AddressablesConfigurator] Addressables package not installed. Skipping group creation.");
+            return null;
+        }
+
+        public void ConfigureGlobalSettings()
+        {
+            Debug.LogWarning("[AddressablesConfigurator] Addressables package not installed. Skipping configuration.");
         }
     }
 }
