@@ -13,8 +13,11 @@ namespace IKhom.TemplateInstaller.Editor
     public static class PackageAutoInstaller
     {
         private const string PACKAGES_INSTALLED_KEY = "TemplateInstaller_PackagesInstalled";
+        private const string DIALOG_SHOWN_KEY = "TemplateInstaller_DialogShown";
         private static AddRequest _addRequest;
         private static int _packageIndex = 0;
+        private static ListRequest _listRequest;
+        private static bool _isChecking = false;
         private static readonly string[] RequiredPackages =
         {
             "com.unity.addressables",
@@ -32,37 +35,51 @@ namespace IKhom.TemplateInstaller.Editor
 
         private static void CheckAndInstallPackages()
         {
+            // Prevent multiple simultaneous checks
+            if (_isChecking) return;
+            _isChecking = true;
+
             // Check if packages are already installed
-            ListRequest listRequest = Client.List(true);
+            _listRequest = Client.List(true);
+            EditorApplication.update += OnListRequestUpdate;
+        }
 
-            EditorApplication.update += () =>
+        private static void OnListRequestUpdate()
+        {
+            if (_listRequest == null || !_listRequest.IsCompleted) return;
+
+            // Unregister immediately to prevent multiple calls
+            EditorApplication.update -= OnListRequestUpdate;
+
+            if (_listRequest.Status == StatusCode.Success)
             {
-                if (!listRequest.IsCompleted) return;
-
-                if (listRequest.Status == StatusCode.Success)
+                bool allInstalled = true;
+                foreach (var packageName in RequiredPackages)
                 {
-                    bool allInstalled = true;
-                    foreach (var packageName in RequiredPackages)
+                    bool found = false;
+                    foreach (var package in _listRequest.Result)
                     {
-                        bool found = false;
-                        foreach (var package in listRequest.Result)
+                        if (package.name == packageName)
                         {
-                            if (package.name == packageName)
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-
-                        if (!found)
-                        {
-                            allInstalled = false;
+                            found = true;
                             break;
                         }
                     }
 
-                    if (!allInstalled)
+                    if (!found)
                     {
+                        allInstalled = false;
+                        break;
+                    }
+                }
+
+                if (!allInstalled)
+                {
+                    // Check if we've already shown the dialog this session
+                    if (!SessionState.GetBool(DIALOG_SHOWN_KEY, false))
+                    {
+                        SessionState.SetBool(DIALOG_SHOWN_KEY, true);
+
                         // Show dialog asking to install packages
                         if (EditorUtility.DisplayDialog(
                             "Template Installer - Required Packages",
@@ -75,15 +92,22 @@ namespace IKhom.TemplateInstaller.Editor
                         {
                             InstallNextPackage();
                         }
-                    }
-                    else
-                    {
-                        // All packages already installed
-                        EditorPrefs.SetBool(PACKAGES_INSTALLED_KEY, true);
-                        Debug.Log("[TemplateInstaller] All required packages are already installed.");
+                        else
+                        {
+                            Debug.LogWarning("[TemplateInstaller] Package installation postponed. You can install them later via Window → Package Manager.");
+                        }
                     }
                 }
-            };
+                else
+                {
+                    // All packages already installed
+                    EditorPrefs.SetBool(PACKAGES_INSTALLED_KEY, true);
+                    Debug.Log("[TemplateInstaller] All required packages are already installed.");
+                }
+            }
+
+            _listRequest = null;
+            _isChecking = false;
         }
 
         private static void InstallNextPackage()
@@ -135,11 +159,21 @@ namespace IKhom.TemplateInstaller.Editor
             _addRequest = null;
         }
 
+        [MenuItem("Tools/Template Installer/Install Required Packages")]
+        public static void ManualInstallPackages()
+        {
+            // Reset flags and trigger installation
+            SessionState.SetBool(DIALOG_SHOWN_KEY, false);
+            _isChecking = false;
+            CheckAndInstallPackages();
+        }
+
         [MenuItem("Tools/Template Installer/Reset Package Installation Flag")]
         private static void ResetInstallationFlag()
         {
             EditorPrefs.DeleteKey(PACKAGES_INSTALLED_KEY);
-            Debug.Log("[TemplateInstaller] Package installation flag reset. Restart Unity to trigger auto-installation.");
+            SessionState.SetBool(DIALOG_SHOWN_KEY, false);
+            Debug.Log("[TemplateInstaller] Package installation flags reset. Restart Unity to trigger auto-installation.");
         }
     }
 }

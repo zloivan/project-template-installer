@@ -19,7 +19,9 @@ When you first import the Template Installer, it will automatically:
 
 **Time:** ~2-3 minutes (including recompilation)
 
-**Note:** VContainer is already in your manifest.json and will be installed automatically.
+**Note:**
+- VContainer is already in your manifest.json and will be installed automatically.
+- The dialog will only show once per Unity session. If you click "Later", you can manually install via `Tools → Template Installer → Install Required Packages`
 
 ---
 

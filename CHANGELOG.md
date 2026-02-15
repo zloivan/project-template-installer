@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed package dependencies from package.json to prevent signature warnings
 - Package installation now uses latest compatible versions (no hardcoded versions)
 - Compilation errors when Addressables/Localization not installed - added conditional compilation
+- Infinite dialog loop in PackageAutoInstaller - now shows dialog only once per session
 
 ### Added
 - `PackageAutoInstaller` - automatically prompts to install required packages on first import
