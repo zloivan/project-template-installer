@@ -16,8 +16,9 @@
 
 **Fix Applied:**
 - Added `"com.unity.localization": "1.4.5"` to `Packages/manifest.json`
-- Added `"jp.hadashikick.vcontainer": "1.15.4"` to `Packages/manifest.json`
-- This matches the dependency requirements in your package.json
+- Added VContainer via Git URL to `Packages/manifest.json`:
+  - `"jp.hadashikick.vcontainer": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.17.0"`
+- VContainer is not in Unity's official registry, so we use the Git URL method (same as UniTask)
 
 **What to do next:**
 1. Unity will automatically download and install the Localization package
@@ -143,7 +144,7 @@ public class GameEntryPoint : MonoBehaviour
 3. Check that all packages show as installed:
    - ✅ Addressables (1.22.3)
    - ✅ Localization (1.4.5)
-   - ✅ VContainer (1.15.4)
+   - ✅ VContainer (1.17.0)
 4. No "Invalid signature" warnings should appear
 
 ### Step 2: Test Template Installation

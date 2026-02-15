@@ -13,7 +13,7 @@ All issues have been resolved:
 Unity is now installing required packages:
 - ✅ Addressables (1.22.3)
 - ✅ Localization (1.4.5)
-- ✅ VContainer (1.15.4)
+- ✅ VContainer (1.17.0)
 
 Wait for:
 - Progress bar in bottom-right corner to complete

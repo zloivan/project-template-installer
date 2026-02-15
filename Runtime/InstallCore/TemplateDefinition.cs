@@ -33,7 +33,7 @@ namespace IKhom.TemplateInstaller
         {
             "com.unity.addressables",
             "com.unity.localization",
-            "jp.hadashikick.vcontainer"
+            "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.17.0"
         };
 
         [Header("Code Templates")]

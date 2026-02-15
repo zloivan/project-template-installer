@@ -202,7 +202,7 @@ public class MyUI : MonoBehaviour
 - Unity 2022.3 LTS or newer
 - Addressables Package 1.21.0+ (auto-installed)
 - Localization Package 1.4.0+ (auto-installed)
-- VContainer 1.15.4+ (auto-installed)
+- VContainer 1.17.0+ (auto-installed via Git URL)
 - UniTask (optional but recommended)
 
 ## Extensibility

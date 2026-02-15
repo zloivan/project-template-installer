@@ -5,8 +5,9 @@
 ### What Changed
 
 #### 1. Package Dependencies ✅
-- **Added VContainer 1.15.4** to all package manifests
+- **Added VContainer 1.15.4** via Git URL to project manifest
 - VContainer is now automatically installed when you use the Template Installer
+- Uses Git URL method (like UniTask) since VContainer is not in Unity's official registry
 - No manual package installation required
 
 #### 2. Code Generation ✅

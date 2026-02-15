@@ -34,7 +34,7 @@ The following packages will be automatically installed:
 
 1. **Addressables** (1.22.3) - Asset management
 2. **Localization** (1.4.5) - Multi-language support
-3. **VContainer** (1.15.4) - Dependency injection
+3. **VContainer** (1.17.0) - Dependency injection (via Git URL)
 
 ---
 
@@ -79,9 +79,9 @@ The following packages will be automatically installed:
 
 ### Step 1: Wait for Packages (1-2 minutes)
 Unity is now installing:
-- ✅ Addressables
-- ✅ Localization
-- ✅ VContainer
+- ✅ Addressables (1.22.3)
+- ✅ Localization (1.4.5)
+- ✅ VContainer (1.17.0)
 
 Watch the progress bar in the bottom-right corner.
 
