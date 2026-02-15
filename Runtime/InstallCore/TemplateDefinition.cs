@@ -32,8 +32,7 @@ namespace IKhom.TemplateInstaller
         [SerializeField] private List<string> requiredPackages = new List<string>
         {
             "com.unity.addressables",
-            "com.unity.localization",
-            "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.17.0"
+            "com.unity.localization"
         };
 
         [Header("Code Templates")]

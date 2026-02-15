@@ -10,10 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Unity 6 (6000.x) version validation - now supports Unity 2022.3 LTS and newer
 - Removed package dependencies from package.json to prevent signature warnings
+- Package installation now uses latest compatible versions (no hardcoded versions)
+
+### Added
+- `PackageAutoInstaller` - automatically prompts to install required packages on first import
+- Packages install without version numbers to get latest compatible version for your Unity
 
 ### Changed
 - Improved version parsing with `IsUnityVersionSupported()` method
 - Updated package description for Unity 6 compatibility
+- Removed VContainer from required packages (already in manifest.json)
 
 ---
 

@@ -203,14 +203,22 @@ namespace IKhom.TemplateInstaller.Editor
 
         private void InstallDependencies()
         {
+            bool needsPackages = false;
+
             foreach (var package in _template.RequiredPackages)
             {
                 // Check if package is already installed
                 if (!PackageValidator.IsPackageInstalled(package))
                 {
+                    needsPackages = true;
                     Debug.Log($"[TemplateInstaller] Installing package: {package}");
                     PackageInstallationHelper.InstallPackage(package);
                 }
+            }
+
+            if (needsPackages)
+            {
+                Debug.LogWarning("[TemplateInstaller] Packages are being installed. Please wait for Package Manager to complete, then run the installer again.");
             }
         }
 

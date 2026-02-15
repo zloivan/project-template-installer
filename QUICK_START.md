@@ -2,18 +2,19 @@
 
 ## How to Use (3 Simple Steps)
 
-### Step 1: Wait for Package Installation
-Unity is now installing required packages:
-- ✅ Addressables (1.22.3)
-- ✅ Localization (1.4.5)
-- ✅ VContainer (1.17.0)
+### Step 1: Install Required Packages
+When you first import the Template Installer, it will automatically prompt you to install:
+- ✅ Addressables (latest compatible version)
+- ✅ Localization (latest compatible version)
 
-Wait for:
+Click **"Install"** when prompted, then wait for:
 - Progress bar in bottom-right corner to complete
-- Console message: "Package Manager resolve completed"
+- Console message: "All required packages installed successfully!"
 - No errors in Package Manager window
 
 **Time:** ~1-2 minutes
+
+**Note:** VContainer is already in your manifest.json and will be installed automatically.
 
 ---
 
