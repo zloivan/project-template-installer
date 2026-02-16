@@ -274,9 +274,12 @@ namespace IKhom.TemplateInstaller.Editor
             {
                 EditorUtility.DisplayDialog(
                     "Installation Complete",
-                    result.Message + "\n\nPlease allow Unity to compile the new scripts.",
+                    result.Message + "\n\nPlease allow Unity to compile the new scripts.\n\nA tutorial window will open to help you get started.",
                     "OK"
                 );
+
+                // Open tutorial window
+                TemplateTutorialWindow.ShowTutorial(_selectedTemplate);
 
                 if (_removeInstallerAfterSetup)
                 {

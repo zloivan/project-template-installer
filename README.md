@@ -36,6 +36,8 @@ Production-ready Unity project template installer that generates complete archit
 ### First Time Setup
 1. After installation, the Template Installer window opens automatically
 2. Or open via `Tools → Project Template Installer`
+3. **After installation completes, a Tutorial Window will open automatically** with detailed step-by-step instructions
+4. Access the tutorial anytime via `Tools → Template Installer → Show Tutorial`
 
 ### Choose Your Template
 **Single-Scene Prototype** - Choose if:
@@ -207,12 +209,35 @@ public class MyUI : MonoBehaviour
 
 **Note:** Packages are installed automatically without version numbers to get the latest compatible version for your Unity.
 
+## Documentation & Tutorials
+
+### 📚 Built-in Tutorial System
+After installing a template, an **interactive tutorial window** opens automatically with:
+- **Overview**: What the template is designed for
+- **What Was Created**: Complete list of generated files and configurations
+- **Quick Start Steps**: Step-by-step instructions to get productive immediately
+- **How to Work With**: Detailed workflows for common development patterns
+- **Common Tasks**: Practical "How to" examples with code snippets
+- **Next Steps**: Recommended actions after initial setup
+- **Additional Resources**: Links to documentation and guides
+
+Access the tutorial anytime: `Tools → Template Installer → Show Tutorial`
+
+### 📖 Documentation Files
+- **QUICK_REFERENCE.md**: Quick reference for all templates with code snippets
+- **TUTORIAL_SYSTEM.md**: Complete guide to the tutorial system
+- **unity-arch-single-scene.md**: Detailed Single-Scene architecture guide
+- **unity-arch-modular.md**: Detailed Modular architecture guide
+- **unity-arch-clean.md**: Detailed Clean Architecture guide
+- **ARCHITECTURE.md**: General architecture overview
+
 ## Extensibility
 
 You can create custom templates by:
 1. Creating a new `TemplateDefinition` ScriptableObject
 2. Defining folder structures, scenes, and configurations
 3. Implementing custom `ITemplateModule` interfaces
+4. Adding tutorial content in `TemplateTutorialWindow.cs`
 
 See documentation for advanced customization.
 
