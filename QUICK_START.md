@@ -1,5 +1,11 @@
 # Template Installer - Quick Start Guide
 
+## ⚠️ First: Restart Unity
+
+After the package has been added to `manifest.json`, **restart Unity** to clear any "immutable package" warnings.
+
+---
+
 ## How to Use (3 Simple Steps)
 
 ### Step 1: Install Required Packages
